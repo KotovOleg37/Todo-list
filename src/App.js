@@ -1,18 +1,23 @@
-import React, { useState } from 'react';
-import useLocalStorage from './useLocalStorage';
-import NoteList from './NoteList';
-import NoteEditor from './NoteEditor';
-import { v4 as uuidv4 } from 'uuid';
-import './App.css';
+import React, { useState } from "react";
+import useLocalStorage from "./useLocalStorage";
+import NoteList from "./NoteList";
+import NoteEditor from "./NoteEditor";
+import { v4 as uuidv4 } from "uuid";
+import "./App.css";
 
 function App() {
-  const [notes, setNotes] = useLocalStorage('notes', [
-    { id: uuidv4(), text: 'Это ваша первая заметка!' },
+  // как вариант, чтобы показать, что ты знаешь структуры данных, можешь использовать
+  // для хранения notes Map(), а не объект. Тогда, например, при добавлении заметки
+  //не надо будет спредить существующий массив, не будет перебора массива при удалении и апдейте заметки
+  const [notes, setNotes] = useLocalStorage("notes", [
+    { id: uuidv4(), text: "Это ваша первая заметка!" },
   ]);
   const [activeNote, setActiveNote] = useState(null);
 
+  // я бы передавал в NoteList notes, setNotes и setActiveNote, а addNote, updateNote, deleteNote
+  // объявил бы внутри NoteList
   const addNote = () => {
-    const newNote = { id: uuidv4(), text: 'Новая заметка' };
+    const newNote = { id: uuidv4(), text: "Новая заметка" };
     setNotes([...notes, newNote]);
     setActiveNote(newNote.id);
   };
@@ -42,10 +47,7 @@ function App() {
         activeNote={activeNote}
       />
       {activeNoteData && ( // Проверяем, существует ли активная заметка
-        <NoteEditor
-          note={activeNoteData}
-          onUpdateNote={updateNote}
-        />
+        <NoteEditor note={activeNoteData} onUpdateNote={updateNote} />
       )}
     </div>
   );
