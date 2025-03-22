@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import styles from "./NoteEditor.module.css";
 
 function NoteEditor({ note, onUpdateNote }) {
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
 
   useEffect(() => {
     if (note) {
@@ -20,13 +21,14 @@ function NoteEditor({ note, onUpdateNote }) {
   }
 
   return (
-    <div className="note-editor">
+    <div className={styles.noteEditor}>
       <textarea
+        className={styles.textarea}
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Введите текст заметки..."
       />
-      <button onClick={handleSave}>Сохранить</button>
+      <button className={styles.button} onClick={handleSave}>Сохранить</button>
     </div>
   );
 }

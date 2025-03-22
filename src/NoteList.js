@@ -1,9 +1,10 @@
 import React from 'react';
+import styles from './NoteList.module.css';
 
 function NoteList({ notes, onAddNote, onDeleteNote, onSelectNote, activeNote }) {
   return (
-    <div className="note-list">
-      <button onClick={onAddNote}>Добавить заметку</button>
+    <div className={styles.noteList}> 
+      <button className={styles.button} onClick={onAddNote}>Добавить заметку</button>
       {notes.map((note) => (
         <div
           key={note.id}
@@ -11,7 +12,7 @@ function NoteList({ notes, onAddNote, onDeleteNote, onSelectNote, activeNote }) 
           onClick={() => onSelectNote(note.id)}
         >
           <span>{note.text.substring(0, 20)}...</span>
-          <button onClick={() => onDeleteNote(note.id)}>Удалить</button>
+          <button className={`${styles.button} ${styles.deleteButton}`} onClick={() => onDeleteNote(note.id)}>Удалить</button>
         </div>
       ))}
     </div>

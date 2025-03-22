@@ -3,7 +3,7 @@ import useLocalStorage from './useLocalStorage';
 import NoteList from './NoteList';
 import NoteEditor from './NoteEditor';
 import { v4 as uuidv4 } from 'uuid';
-import './App.css';
+import styles from './App.module.css'; 
 
 function App() {
   const [notes, setNotes] = useLocalStorage('notes', [
@@ -33,7 +33,7 @@ function App() {
   const activeNoteData = notes.find((note) => note.id === activeNote);
 
   return (
-    <div className="app">
+    <div className={styles.app}>
       <NoteList
         notes={notes}
         onAddNote={addNote}
@@ -42,9 +42,7 @@ function App() {
         activeNote={activeNote}
       />
       {activeNoteData && ( // Проверяем, существует ли активная заметка
-        <NoteEditor
-          note={activeNoteData}
-          onUpdateNote={updateNote}
+        <NoteEditor note={activeNoteData} onUpdateNote={updateNote}
         />
       )}
     </div>
