@@ -1,0 +1,100 @@
+.editorContainer {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #ffffff;
+  min-width: 1200px;
+  margin: 0 auto;
+}
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.toolbarButton {
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toolbarButton:hover {
+  background-color: #e9ecef;
+}
+
+.toolbarButton.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.toolbarButton input[type="file"] {
+  display: none;
+}
+
+.editorContent {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  min-height: 200px;
+  background-color: #ffffff;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+   
+.colorPicker {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background: none;
+}
+
+.colorPicker::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.colorPicker::-webkit-color-swatch {
+  border: none;
+  border-radius: 4px;
+}
+
+.fontSizeSelect {
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #f8f9fa;
+  transition: background-color 0.3s ease;
+}
+
+.fontSizeSelect:hover {
+  background-color: #e9ecef;
+}
+
+@media (max-width: 768px) {
+    .editorContainer {
+      max-width: 100%; /* На маленьких экранах занимаем всю ширину */
+      padding: 5px;
+    }
+  
+    .editorContent {
+      min-height: 150px; /* Уменьшаем высоту на маленьких экранах */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .editorContent {
+      min-height: 100px; /* Еще меньше высота на очень маленьких экранах */
+    }
+  }

@@ -1,34 +1,21 @@
 import React, { useState, useEffect } from "react";
+import RichTextEditor from "./RichTextEditor";
 import styles from "./NoteEditor.module.css";
 
 function NoteEditor({ note, onUpdateNote }) {
-  const [title, setTitle] = useState(note.title);
-  const [text, setText] = useState(note.text);
+  const [content, setContent] = useState(note.text);
 
   useEffect(() => {
-    setTitle(note.title);
-    setText(note.text);
+    setContent(note.text);
   }, [note]);
 
   const handleSave = () => {
-    onUpdateNote({ ...note, title, text });
+    onUpdateNote({ ...note, text: content });
   };
 
   return (
     <div className={styles.noteEditor}>
-      <input
-        type="text"
-        className={styles.titleInput}
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Введите заголовок..."
-      />
-      <textarea
-        className={styles.textarea}
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Введите текст заметки..."
-      />
+      <RichTextEditor content={content} onUpdate={setContent} />
       <button className={styles.button} onClick={handleSave}>
         Сохранить
       </button>
