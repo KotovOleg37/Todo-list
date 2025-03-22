@@ -2,33 +2,36 @@ import React, { useState, useEffect } from "react";
 import styles from "./NoteEditor.module.css";
 
 function NoteEditor({ note, onUpdateNote }) {
-  const [text, setText] = useState("");
+  const [title, setTitle] = useState(note.title);
+  const [text, setText] = useState(note.text);
 
   useEffect(() => {
-    if (note) {
-      setText(note.text);
-    }
+    setTitle(note.title);
+    setText(note.text);
   }, [note]);
 
   const handleSave = () => {
-    if (note) {
-      onUpdateNote({ ...note, text });
-    }
+    onUpdateNote({ ...note, title, text });
   };
-
-  if (!note) {
-    return <div>Заметка не найдена.</div>;
-  }
 
   return (
     <div className={styles.noteEditor}>
+      <input
+        type="text"
+        className={styles.titleInput}
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Введите заголовок..."
+      />
       <textarea
         className={styles.textarea}
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Введите текст заметки..."
       />
-      <button className={styles.button} onClick={handleSave}>Сохранить</button>
+      <button className={styles.button} onClick={handleSave}>
+        Сохранить
+      </button>
     </div>
   );
 }
