@@ -1,5 +1,14 @@
-Ссылка на работаюшие приложение https://kotovoleg37.github.io/Todo-list/
+Ссылка на работающие приложение: https://kotovoleg37.github.io/Todo-list/
 
+Для того чтобы развернуть приложение у себя выполните в терминале следующие:
+1. установите NodeJS https://nodejs.org/en
+Выполните в терминале следующие команды:
+2. git clone https://github.com/KotovOleg37/Todo-list
+3. cd Todo-list
+4. npm install
+5. npm start
+ 
+Задание. 
 Необходимо создать приложение «Заметки» на одном из следующих языков
 программирования.
  Java;
